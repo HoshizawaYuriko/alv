@@ -13,15 +13,15 @@ public class Anime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private int maxEpisodes;
     
     @Column
     private String genre;
 
     @Column
-    private String premiereSeason;
+    private String premieredSeason;
 }

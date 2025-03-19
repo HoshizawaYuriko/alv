@@ -21,9 +21,9 @@ public class Listentry {
     @JoinColumn(name = "anime_id", nullable = false)
     private Anime anime;
 
-    // Todo: Create own Status Table
-    @Column
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Status status;
 
     @Column
     private int progress;
