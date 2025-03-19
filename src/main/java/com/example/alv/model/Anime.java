@@ -1,5 +1,7 @@
 package com.example.alv.model;
 
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,8 +25,13 @@ public class Anime {
     @Column(nullable = false)
     private int maxEpisodes;
     
-    @Column
-    private String genre;
+    @ManyToMany
+    @JoinTable(
+        name = "anime_genre",
+        joinColumns = @JoinColumn(name = "anime_id"),
+        inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private Set<Genre> genres;
 
     @Column
     private String premieredSeason;
