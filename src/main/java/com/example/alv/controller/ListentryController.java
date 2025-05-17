@@ -1,5 +1,7 @@
 package com.example.alv.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,19 @@ public class ListentryController {
 
     public ListentryController(ListentryService listentryService) {
         this.listentryService = listentryService;
+    }
+
+    // Get all listentries
+    @GetMapping("/list")
+    public ResponseEntity<List<Listentry>> getAllListentries() {
+        return ResponseEntity.ok(listentryService.getAllListentries());
+    }
+
+    // Get listentry by ID
+    @GetMapping("/read/{id}")
+    public ResponseEntity<Listentry> getListentryById(@PathVariable Long id) {
+        Listentry listentry = listentryService.getListentryById(id);
+        return ResponseEntity.ok(listentry);
     }
 
     // Create a new listentry from given form data

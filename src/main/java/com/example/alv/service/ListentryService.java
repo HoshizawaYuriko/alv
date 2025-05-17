@@ -7,6 +7,8 @@ import com.example.alv.model.Listentry;
 import com.example.alv.repository.AnimeRepository;
 import com.example.alv.repository.ListentryRepository;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,12 +23,31 @@ public class ListentryService {
         this.animeRepository = animeRepository;
     }
 
+    // Get all listentries
+    public List<Listentry> getAllListentries() {
+        return listentryRepository.findAll();
+    }
+
+    // Get listentry by ID
+    public Listentry getListentryById(Long id) {
+        return listentryRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Listentry not found with id: " + id));
+    }
+
     // Create new listentry
     public Listentry createListentry(ListentryDTO dto) {
         // Find and check if Anime exists
         Anime anime = animeRepository.findById(dto.getAnimeId())
         .orElseThrow(() -> new ResponseStatusException(
             HttpStatus.NOT_FOUND, "Anime not found with id: " + dto.getAnimeId()));
+
+        // Check if listentry for the Anime doesn't already exist
+        if (listentryRepository.existsByAnime(anime)) {
+            throw new ResponseStatusException(
+                HttpStatus.CONFLICT,
+                "Listentry for this Anime already exists"
+            );
+        }
 
         // Check if progress doesn't exceed maxEpisodes
         if (dto.getProgress() > anime.getMaxEpisodes()) {
