@@ -2,6 +2,7 @@ package com.example.alv.service;
 
 import com.example.alv.dto.ListentryDTO;
 import com.example.alv.model.Anime;
+import com.example.alv.model.Status;
 import com.example.alv.model.Listentry;
 import com.example.alv.repository.AnimeRepository;
 import com.example.alv.repository.ListentryRepository;
@@ -9,8 +10,6 @@ import com.example.alv.repository.ListentryRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.Optional;
 
 @Service
 public class ListentryService {
@@ -22,17 +21,54 @@ public class ListentryService {
         this.animeRepository = animeRepository;
     }
 
-    // Create new listentry from
+    // Create new listentry
     public Listentry createListentry(ListentryDTO dto) {
-        // Find existing Anime
-        Optional<Anime> animeEntity = animeRepository.findById(dto.getAnimeId());
+        // Find and check if Anime exists
+        Anime anime = animeRepository.findById(dto.getAnimeId())
+        .orElseThrow(() -> new ResponseStatusException(
+            HttpStatus.NOT_FOUND, "Anime not found with id: " + dto.getAnimeId()));
 
-        // Todo: Handle Error if no Anime was found
-        if (animeEntity.isEmpty()) {
-            throw new RuntimeException("Anime not found with id: " + dto.getAnimeId());
+        // Check if progress doesn't exceed maxEpisodes
+        if (dto.getProgress() > anime.getMaxEpisodes()) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "Progress cannot be greater than max episode count of the Anime (" + anime.getMaxEpisodes() + ")"
+            );
         }
 
-        Anime anime = animeEntity.get();
+        // Check if start and end dates are valid
+        if (dto.getStartdate() != null && dto.getEnddate() != null && dto.getEnddate().before(dto.getStartdate())) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "End date cannot be before start date."
+            );
+        }
+
+        // Check status vs progress consistency
+        if (Status.PLANNED == dto.getStatus() && dto.getProgress() != 0) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "Status is PLANNED but progress is higher than 0."
+            );
+        }
+        if (Status.COMPLETED == dto.getStatus() && dto.getProgress() < anime.getMaxEpisodes()) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "Status is COMPLETED but progress is less than max episode count."
+            );
+        }
+        if (Status.ON_HOLD == dto.getStatus() && dto.getProgress() == anime.getMaxEpisodes()) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "Status is ON_HOLD but all Episodes have already been watched."
+            );
+        }
+        if (Status.DROPPED == dto.getStatus() && dto.getProgress() == anime.getMaxEpisodes()) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "Status is DROPPED but all Episodes have already been watched."
+            );
+        }
 
         Listentry listentry = new Listentry();
         listentry.setAnime(anime);
