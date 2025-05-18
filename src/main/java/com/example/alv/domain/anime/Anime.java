@@ -34,5 +34,6 @@ public class Anime {
     private Set<Genre> genres;
 
     @Column
-    private String premieredSeason;
+    @Embedded
+    private Season premieredSeason;
 }

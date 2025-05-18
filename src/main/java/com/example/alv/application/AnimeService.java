@@ -5,6 +5,7 @@ import com.example.alv.domain.anime.Anime;
 import com.example.alv.domain.anime.AnimeRepository;
 import com.example.alv.domain.anime.Genre;
 import com.example.alv.domain.anime.GenreRepository;
+import com.example.alv.domain.anime.Season;
 import com.example.alv.domain.listentry.ListentryRepository;
 
 import org.springframework.http.HttpStatus;
@@ -56,7 +57,7 @@ public class AnimeService {
         anime.setName(dto.getName());
         anime.setMaxEpisodes(dto.getMaxEpisodes());
         anime.setGenres(genres);
-        anime.setPremieredSeason(dto.getPremieredSeason());
+        anime.setPremieredSeason(new Season(dto.getPremieredSeason()));
 
         return animeRepository.save(anime);
     }
