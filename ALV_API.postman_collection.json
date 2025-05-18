@@ -1,0 +1,686 @@
+{
+	"info": {
+		"_postman_id": "853a0974-8a8f-4a20-a840-50a21930a63f",
+		"name": "ALV API Collection",
+		"description": "Predefined Requests to test the ALV API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45054271"
+	},
+	"item": [
+		{
+			"name": "Anime",
+			"item": [
+				{
+					"name": "Get All Animes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/anime/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"anime",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Anime (ID 1)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/anime/read/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"anime",
+								"read",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Anime 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Yuru Camp△\",\r\n  \"maxEpisodes\": 12,\r\n  \"genreIds\": [3, 8],\r\n  \"premieredSeason\": \"Winter 2018\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/anime/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"anime",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Anime 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Yuru Camp△ Season 2\",\r\n  \"maxEpisodes\": 13,\r\n  \"genreIds\": [3, 8],\r\n  \"premieredSeason\": \"Winter 2021\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/anime/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"anime",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Anime 3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Yuru Camp△ Season 3\",\r\n  \"maxEpisodes\": 12,\r\n  \"genreIds\": [3, 8],\r\n  \"premieredSeason\": \"Spring 2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/anime/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"anime",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Anime Movie (1 Ep)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Yuru Camp△ Movie\",\r\n  \"maxEpisodes\": 1,\r\n  \"genreIds\": [3, 8],\r\n  \"premieredSeason\": \"Summer 2022\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/anime/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"anime",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Anime (ID 1)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Yuru Camp△ Movie\",\r\n  \"maxEpisodes\": 1,\r\n  \"genreIds\": [3, 8],\r\n  \"premieredSeason\": \"Summer 2022\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/anime/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"anime",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Anime (ID 2)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Yuru Camp△ Movie\",\r\n  \"maxEpisodes\": 1,\r\n  \"genreIds\": [3, 8],\r\n  \"premieredSeason\": \"Summer 2022\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/anime/delete/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"anime",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listentry",
+			"item": [
+				{
+					"name": "Get All Listentries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/listentry/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Listentry (ID 1)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/listentry/read/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"read",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter listentries by Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/listentry/filter/status?status=COMPLETED",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"filter",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "COMPLETED"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter listentries by Genre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/listentry/filter/genre?genre=Action",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"filter",
+								"genre"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "Action"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter listentries by Rating",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/listentry/filter/rating?min=7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"filter",
+								"rating"
+							],
+							"query": [
+								{
+									"key": "min",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Listentry (Status Planned)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"animeId\": 1,\r\n  \"status\": \"PLANNED\",\r\n  \"progress\": 0,\r\n  \"startdate\": null,\r\n  \"enddate\": null,\r\n  \"rating\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/listentry/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Listentry (Status Watching)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"animeId\": 2,\r\n  \"status\": \"WATCHING\",\r\n  \"progress\": 109,\r\n  \"startdate\": \"2024-03-28T18:00:00\",\r\n  \"enddate\": null,\r\n  \"rating\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/listentry/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Listentry (Status Completed)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"animeId\": 5,\r\n  \"status\": \"COMPLETED\",\r\n  \"progress\": 22,\r\n  \"startdate\": \"2023-08-10T12:00:00\",\r\n  \"enddate\": \"2024-09-02T12:00:00\",\r\n  \"rating\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/listentry/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Increase Progress by 1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/listentry/progress/increment/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"progress",
+								"increment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Progress to 8",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/listentry/progress/set/1?episode=8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"progress",
+								"set",
+								"1"
+							],
+							"query": [
+								{
+									"key": "episode",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status to ON_HOLD",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/listentry/status/1?status=ON_HOLD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"status",
+								"1"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "ON_HOLD"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Listentry (ID 1)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/listentry/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listentry",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Statistics",
+			"item": [
+				{
+					"name": "Top 10 Genres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stats/top-10-genres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stats",
+								"top-10-genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Watch Status Amount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stats/watch-status-count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stats",
+								"watch-status-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Watched Episodes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stats/total-watched-episodes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stats",
+								"total-watched-episodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Overall Average Rating",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stats/overall-average-rating",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stats",
+								"overall-average-rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Average Rating per Genre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stats/average-rating-per-genre",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stats",
+								"average-rating-per-genre"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
