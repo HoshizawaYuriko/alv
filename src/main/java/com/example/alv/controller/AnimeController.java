@@ -4,6 +4,8 @@ import com.example.alv.dto.AnimeDTO;
 import com.example.alv.model.Anime;
 import com.example.alv.service.AnimeService;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,18 @@ public class AnimeController {
 
     public AnimeController(AnimeService animeService) {
         this.animeService = animeService;
+    }
+
+    // Get all Animes
+    @GetMapping("/list")
+    public ResponseEntity<List<Anime>> getAllAnimes() {
+        return ResponseEntity.ok(animeService.getAllAnimes());
+    }
+
+    // Get Anime by ID
+    @GetMapping("/read/{id}")
+    public ResponseEntity<Anime> getAnimeById(@PathVariable Long id) {
+        return ResponseEntity.ok(animeService.getAnimeById(id));
     }
 
     // Create a new Anime from given form data

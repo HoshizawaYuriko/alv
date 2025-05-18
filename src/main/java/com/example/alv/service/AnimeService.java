@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -25,6 +26,17 @@ public class AnimeService {
         this.animeRepository = animeRepository;
         this.genreRepository = genreRepository;
         this.listentryRepository = listentryRepository;
+    }
+
+    // Get all Animes
+    public List<Anime> getAllAnimes() {
+        return animeRepository.findAll();
+    }
+
+    // Get Anime by ID
+    public Anime getAnimeById(Long id) {
+        return animeRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Anime not found with id: " + id));
     }
 
     // Create new Anime entity
