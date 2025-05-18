@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.alv.dto.ListentryDTO;
 import com.example.alv.model.Listentry;
+import com.example.alv.model.Status;
 import com.example.alv.service.ListentryService;
 
 @RestController
@@ -49,6 +50,13 @@ public class ListentryController {
     @PutMapping("/progress/set/{id}")
     public ResponseEntity<Listentry> setProgress(@PathVariable Long id, @RequestParam int episode) {
         Listentry updatedListentry = listentryService.setProgress(id, episode);
+        return ResponseEntity.ok(updatedListentry);
+    }
+
+    // Set status of given Listentry
+    @PutMapping("/status/{id}")
+    public ResponseEntity<Listentry> updateStatus(@PathVariable Long id, @RequestParam Status status) {
+        Listentry updatedListentry = listentryService.updateStatus(id, status);
         return ResponseEntity.ok(updatedListentry);
     }
 

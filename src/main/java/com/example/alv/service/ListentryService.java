@@ -141,6 +141,37 @@ public class ListentryService {
         return listentryRepository.save(entry);
     }
 
+    // Update listentry status
+    public Listentry updateStatus(Long id, Status newStatus) {
+        Listentry entry = listentryRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Listentry not found with id: " + id));
+
+        int progress = entry.getProgress();
+        int maxEpisodes = entry.getAnime().getMaxEpisodes();
+
+        // Disallow COMPLETED status if progress is not max
+        if (newStatus == Status.COMPLETED && progress != maxEpisodes) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                "Cannot mark as COMPLETED if progress doesn't match max episodes.");
+        }
+
+        // Disallow any status from COMPLETED if progress is already at max
+        if (progress == maxEpisodes && newStatus != Status.COMPLETED) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                "Progress is already at max episodes, cannot change from status COMPLETED.");
+        }
+
+        // Disallow any status from PLANNED (except WATCHING) if progress is still at 0
+        if (progress == 0 && newStatus != Status.PLANNED && newStatus != Status.WATCHING) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                "Progress is 0, cannot change to status " + newStatus + ".");
+        }
+
+        entry.setStatus(newStatus);
+
+        return listentryRepository.save(entry);
+    }
+
     // Delete an existing listentry
     public void deleteListentry(Long id) {
         // Check if listentry exists
