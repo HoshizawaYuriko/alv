@@ -57,15 +57,16 @@ public class DataLoader implements CommandLineRunner {
                 .collect(Collectors.toMap(Genre::getName, genre -> genre));
 
             List<Anime> animes = List.of(
-                new Anime(null, "Attack on Titan", 75, Set.of(genreMap.get("Action"), genreMap.get("Drama"), genreMap.get("Fantasy")), "Winter 2013"),
-                new Anime(null, "One Piece", 1000, Set.of(genreMap.get("Action"), genreMap.get("Adventure"), genreMap.get("Comedy")), "Fall 1999"),
+                new Anime(null, "Attack on Titan", 25, Set.of(genreMap.get("Action"), genreMap.get("Drama"), genreMap.get("Fantasy")), "Spring 2013"),
+                new Anime(null, "One Piece", 2000, Set.of(genreMap.get("Action"), genreMap.get("Adventure"), genreMap.get("Comedy")), "Fall 1999"),
                 new Anime(null, "Demon Slayer", 26, Set.of(genreMap.get("Action"), genreMap.get("Fantasy")), "Spring 2019"),
                 new Anime(null, "Steins;Gate", 24, Set.of(genreMap.get("Sci-Fi"), genreMap.get("Drama")), "Spring 2011"),
                 new Anime(null, "Your Lie in April", 22, Set.of(genreMap.get("Drama"), genreMap.get("Romance")), "Fall 2014"),
-                new Anime(null, "Re:Zero", 50, Set.of(genreMap.get("Fantasy"), genreMap.get("Drama")), "Spring 2016"),
-                new Anime(null, "My Hero Academia", 138, Set.of(genreMap.get("Action"), genreMap.get("Adventure")), "Spring 2016"),
+                new Anime(null, "Re:ZERO -Starting Life in Another World-", 25, Set.of(genreMap.get("Fantasy"), genreMap.get("Drama")), "Spring 2016"),
+                new Anime(null, "My Hero Academia", 13, Set.of(genreMap.get("Action"), genreMap.get("Adventure")), "Spring 2016"),
+                new Anime(null, "My Hero Academia Season 2", 25, Set.of(genreMap.get("Action"), genreMap.get("Adventure")), "Spring 2017"),
                 new Anime(null, "Cowboy Bebop", 26, Set.of(genreMap.get("Action"), genreMap.get("Sci-Fi")), "Spring 1998"),
-                new Anime(null, "Clannad", 44, Set.of(genreMap.get("Slice of Life"), genreMap.get("Romance")), "Fall 2007")
+                new Anime(null, "Clannad", 23, Set.of(genreMap.get("Slice of Life"), genreMap.get("Romance")), "Fall 2007")
             );
 
             animeRepository.saveAll(animes);
