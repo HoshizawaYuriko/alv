@@ -41,5 +41,5 @@ public class Listentry {
     @Min(value = 1, message = "Rating must be at least 1")
     @Max(value = 10, message = "Rating must not exceed 10")
     @Column(nullable = true)
-    private int rating;
+    private Integer rating;
 }
