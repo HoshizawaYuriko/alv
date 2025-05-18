@@ -7,6 +7,9 @@ import com.example.alv.domain.listentry.Status;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class GenreStatisticsService {
     // Get the Top 10 most watched Genres
     public List<Map.Entry<String, Long>> top10Genres(List<Listentry> listentries) {

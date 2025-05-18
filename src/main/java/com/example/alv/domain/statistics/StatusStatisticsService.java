@@ -5,6 +5,9 @@ import com.example.alv.domain.listentry.Status;
 
 import java.util.*;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class StatusStatisticsService {
     // Get total amount of listentries by status
     public Map<Status, Long> countByStatus(List<Listentry> listentries) {
