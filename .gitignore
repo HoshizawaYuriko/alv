@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 data/alv.mv.db
+data/alv.trace.db
 
 ### STS ###
 .apt_generated
