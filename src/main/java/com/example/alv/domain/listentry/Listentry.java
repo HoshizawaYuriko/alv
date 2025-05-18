@@ -53,6 +53,8 @@ public class Listentry {
         }
 
         this.progress = newProgress;
+
+        autoAdjustStatusBasedOnProgress();
         validateStatusConsistency();
     }
 
@@ -102,6 +104,19 @@ public class Listentry {
 
         if ((status == Status.DROPPED || status == Status.ON_HOLD) && progress == max) {
             throw new IllegalStateException("Cannot be " + status + " if all episodes are watched.");
+        }
+    }
+
+    // Automatically updates the status when progress is added
+    private void autoAdjustStatusBasedOnProgress() {
+        int max = anime.getMaxEpisodes();
+
+        // When all episodes have been watched, automatically set status to COMPLETED
+        if (this.progress == max) {
+            this.status = Status.COMPLETED;
+        // When progress is added, advance status from PLANNED/ON_HOLD to WATCHING
+        } else if (this.status == Status.PLANNED || this.status == Status.ON_HOLD) {
+            this.status = Status.WATCHING;
         }
     }
 }
