@@ -5,6 +5,7 @@ import com.example.alv.domain.anime.Anime;
 import com.example.alv.domain.anime.AnimeRepository;
 import com.example.alv.domain.listentry.Listentry;
 import com.example.alv.domain.listentry.ListentryRepository;
+import com.example.alv.domain.listentry.Rating;
 import com.example.alv.domain.listentry.Status;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -50,7 +51,7 @@ public class ListentryService {
         listentry.setProgress(dto.getProgress());
         listentry.setStartdate(dto.getStartdate());
         listentry.setEnddate(dto.getEnddate());
-        listentry.setRating(dto.getRating());
+        listentry.setRating(new Rating(dto.getRating()));
 
         listentry.validateInitialState();
 
