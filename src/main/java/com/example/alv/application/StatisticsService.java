@@ -1,9 +1,10 @@
-package com.example.alv.service;
+package com.example.alv.application;
 
-import com.example.alv.model.Genre;
-import com.example.alv.model.Listentry;
-import com.example.alv.model.Status;
-import com.example.alv.repository.ListentryRepository;
+import com.example.alv.domain.anime.Genre;
+import com.example.alv.domain.listentry.Listentry;
+import com.example.alv.domain.listentry.ListentryRepository;
+import com.example.alv.domain.listentry.Status;
+
 import org.springframework.stereotype.Service;
 
 import java.util.*;

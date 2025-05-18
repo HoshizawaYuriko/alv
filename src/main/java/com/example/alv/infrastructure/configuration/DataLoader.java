@@ -1,9 +1,10 @@
-package com.example.alv.config;
+package com.example.alv.infrastructure.configuration;
 
-import com.example.alv.model.Anime;
-import com.example.alv.model.Genre;
-import com.example.alv.repository.AnimeRepository;
-import com.example.alv.repository.GenreRepository;
+import com.example.alv.domain.anime.Anime;
+import com.example.alv.domain.anime.AnimeRepository;
+import com.example.alv.domain.anime.Genre;
+import com.example.alv.domain.anime.GenreRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

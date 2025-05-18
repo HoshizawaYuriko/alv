@@ -1,6 +1,5 @@
-package com.example.alv.repository;
+package com.example.alv.domain.anime;
 
-import com.example.alv.model.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

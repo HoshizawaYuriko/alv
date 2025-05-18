@@ -1,4 +1,4 @@
-package com.example.alv.model;
+package com.example.alv.domain.listentry;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+
+import com.example.alv.domain.anime.Anime;
 
 @Entity
 @NoArgsConstructor

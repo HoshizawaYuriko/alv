@@ -1,4 +1,4 @@
-package com.example.alv.dto;
+package com.example.alv.api.dto;
 
 import java.util.Set;
 

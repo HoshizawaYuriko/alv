@@ -1,10 +1,11 @@
-package com.example.alv.dto;
+package com.example.alv.api.dto;
 
-import com.example.alv.model.Status;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+
+import com.example.alv.domain.listentry.Status;
 
 @Getter
 @Setter

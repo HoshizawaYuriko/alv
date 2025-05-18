@@ -1,10 +1,10 @@
-package com.example.alv.controller;
+package com.example.alv.api;
 
-import com.example.alv.service.StatisticsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.alv.model.Status;
+import com.example.alv.application.StatisticsService;
+import com.example.alv.domain.listentry.Status;
 
 import java.util.List;
 import java.util.Map;

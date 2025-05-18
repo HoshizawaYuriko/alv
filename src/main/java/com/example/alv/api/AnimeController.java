@@ -1,8 +1,8 @@
-package com.example.alv.controller;
+package com.example.alv.api;
 
-import com.example.alv.dto.AnimeDTO;
-import com.example.alv.model.Anime;
-import com.example.alv.service.AnimeService;
+import com.example.alv.api.dto.AnimeDTO;
+import com.example.alv.application.AnimeService;
+import com.example.alv.domain.anime.Anime;
 
 import java.util.List;
 

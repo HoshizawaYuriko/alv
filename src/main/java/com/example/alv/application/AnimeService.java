@@ -1,11 +1,11 @@
-package com.example.alv.service;
+package com.example.alv.application;
 
-import com.example.alv.dto.AnimeDTO;
-import com.example.alv.model.Anime;
-import com.example.alv.model.Genre;
-import com.example.alv.repository.AnimeRepository;
-import com.example.alv.repository.GenreRepository;
-import com.example.alv.repository.ListentryRepository;
+import com.example.alv.api.dto.AnimeDTO;
+import com.example.alv.domain.anime.Anime;
+import com.example.alv.domain.anime.AnimeRepository;
+import com.example.alv.domain.anime.Genre;
+import com.example.alv.domain.anime.GenreRepository;
+import com.example.alv.domain.listentry.ListentryRepository;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

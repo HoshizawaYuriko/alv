@@ -1,7 +1,7 @@
-package com.example.alv.repository;
+package com.example.alv.domain.listentry;
 
-import com.example.alv.model.Anime;
-import com.example.alv.model.Listentry;
+import com.example.alv.domain.anime.Anime;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.example.alv.model;
+package com.example.alv.domain.anime;
 
 import java.util.Set;
 

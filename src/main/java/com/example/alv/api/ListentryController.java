@@ -1,14 +1,14 @@
-package com.example.alv.controller;
+package com.example.alv.api;
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.alv.dto.ListentryDTO;
-import com.example.alv.model.Listentry;
-import com.example.alv.model.Status;
-import com.example.alv.service.ListentryService;
+import com.example.alv.api.dto.ListentryDTO;
+import com.example.alv.application.ListentryService;
+import com.example.alv.domain.listentry.Listentry;
+import com.example.alv.domain.listentry.Status;
 
 @RestController
 @RequestMapping("/listentry")
