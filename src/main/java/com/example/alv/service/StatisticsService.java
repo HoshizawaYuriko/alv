@@ -40,4 +40,31 @@ public class StatisticsService {
             .limit(10)
             .collect(Collectors.toList());
     }
+
+    // Get total amount of listentries by status
+    public Map<Status, Long> getListentryCountByStatus() {
+        List<Listentry> listentries = listentryRepository.findAll();
+
+        Map<Status, Long> counts = new EnumMap<>(Status.class);
+
+        // Initialize all statuses with zero
+        for (Status status : Status.values()) {
+            counts.put(status, 0L);
+        }
+
+        // Count listentries that match the status
+        for (Listentry entry : listentries) {
+            counts.merge(entry.getStatus(), 1L, Long::sum);
+        }
+
+        return counts;
+    }
+
+    // Get total amount of watched Episodes
+    public long getTotalWatchedEpisodes() {
+        return listentryRepository.findAll()
+            .stream()
+            .mapToLong(Listentry::getProgress)
+            .sum();
+    }
 }
