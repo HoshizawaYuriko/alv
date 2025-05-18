@@ -1,0 +1,24 @@
+package com.example.alv.controller;
+
+import com.example.alv.service.StatisticsService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/stats")
+public class StatisticsController {
+    private final StatisticsService statisticsService;
+
+    public StatisticsController(StatisticsService statisticsService) {
+        this.statisticsService = statisticsService;
+    }
+
+    // Get the Top 10 most watched Genres
+    @GetMapping("/top-10-genres")
+    public ResponseEntity<List<Map.Entry<String, Long>>> getTopGenres() {
+        return ResponseEntity.ok(statisticsService.getTop10Genres());
+    }
+}
