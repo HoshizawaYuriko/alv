@@ -56,7 +56,7 @@ public class AnimeService {
         Anime anime = new Anime();
         anime.setName(dto.getName());
         anime.setMaxEpisodes(dto.getMaxEpisodes());
-        anime.setGenres(genres);
+        anime.assignGenres(genres);
         anime.setPremieredSeason(new Season(dto.getPremieredSeason()));
 
         return animeRepository.save(anime);

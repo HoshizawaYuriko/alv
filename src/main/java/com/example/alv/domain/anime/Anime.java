@@ -24,7 +24,7 @@ public class Anime {
 
     @Column(nullable = false)
     private int maxEpisodes;
-    
+
     @ManyToMany
     @JoinTable(
         name = "anime_genre",
@@ -36,4 +36,20 @@ public class Anime {
     @Column
     @Embedded
     private Season premieredSeason;
+
+    // Operations for Genre to add to or remove from an Anime entity
+    public void assignGenres(Set<Genre> genres) {
+        this.genres = genres;
+    }
+
+    public void addGenre(Genre genre) {
+        if (genres.contains(genre)) {
+            throw new IllegalStateException("Genre already assigned.");
+        }
+        this.genres.add(genre);
+    }
+
+    public void removeGenre(Genre genre) {
+        this.genres.remove(genre);
+    }
 }
