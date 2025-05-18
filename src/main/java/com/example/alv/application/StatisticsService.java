@@ -19,11 +19,16 @@ public class StatisticsService {
     private final StatusStatisticsService statusStatisticsService;
     private final ProgressStatisticsService progressStatisticsService;
 
-    public StatisticsService(ListentryRepository repo) {
-        this.listentryRepository = repo;
-        this.genreStatisticsService = new GenreStatisticsService();
-        this.statusStatisticsService = new StatusStatisticsService();
-        this.progressStatisticsService = new ProgressStatisticsService();
+    public StatisticsService(
+        ListentryRepository listentryRepository,
+        GenreStatisticsService genreStatisticsService,
+        StatusStatisticsService statusStatisticsService,
+        ProgressStatisticsService progressStatisticsService
+    ) {
+        this.listentryRepository = listentryRepository;
+        this.genreStatisticsService = genreStatisticsService;
+        this.statusStatisticsService = statusStatisticsService;
+        this.progressStatisticsService = progressStatisticsService;
     }
 
     // Get the Top 10 most watched Genres
