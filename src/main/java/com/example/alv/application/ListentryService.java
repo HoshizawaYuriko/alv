@@ -34,6 +34,21 @@ public class ListentryService {
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Listentry not found with id: " + id));
     }
 
+    // Get listentries by status
+    public List<Listentry> findByStatus(Status status) {
+        return listentryRepository.findByStatus(status);
+    }
+
+    // Get listentries by Genre of Anime
+    public List<Listentry> findByGenre(String genreName) {
+        return listentryRepository.findByGenreName(genreName);
+    }
+
+    // Get listentries with a higher Rating than the given one
+    public List<Listentry> findByRatingGreaterThan(int minRating) {
+        return listentryRepository.findByRatingGreaterThan(minRating);
+    }
+
     // Create new listentry
     public Listentry createListentry(ListentryDTO dto) {
         // Find and check if Anime exists

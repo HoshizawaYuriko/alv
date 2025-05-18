@@ -32,6 +32,24 @@ public class ListentryController {
         return ResponseEntity.ok(listentry);
     }
 
+    // Get listentries filtered by status
+    @GetMapping("/filter/status")
+    public ResponseEntity<List<Listentry>> getByStatus(@RequestParam Status status) {
+        return ResponseEntity.ok(listentryService.findByStatus(status));
+    }
+
+    // Get listentries filtered by Genre of the Anime
+    @GetMapping("/filter/genre")
+    public ResponseEntity<List<Listentry>> getByGenre(@RequestParam String genre) {
+        return ResponseEntity.ok(listentryService.findByGenre(genre));
+    }
+
+    // Get listentries filtered by rating > given rating
+    @GetMapping("/filter/rating")
+    public ResponseEntity<List<Listentry>> getByRating(@RequestParam int min) {
+        return ResponseEntity.ok(listentryService.findByRatingGreaterThan(min));
+    }
+
     // Create a new listentry from given form data
     @PostMapping("/create")
     public ResponseEntity<Listentry> createListentry(@RequestBody ListentryDTO dto) {
