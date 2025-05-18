@@ -13,7 +13,11 @@ class ListentryTest {
     @Test
     void shouldSetStatusToCompletedWhenProgressEqualsMax() {
         Anime anime = new Anime(1L, "Test Anime", 12, Set.of(), new Season("Spring 2023"));
-        Listentry listentry = new Listentry(null, anime, Status.WATCHING, 11, null, null, null);
+        Listentry listentry = new ListentryBuilder()
+            .withAnime(anime)
+            .withStatus(Status.WATCHING)
+            .withProgress(11)
+            .build();
 
         listentry.incrementProgress();
 
@@ -25,7 +29,11 @@ class ListentryTest {
     @Test
     void shouldSetStatusToWatchingWhenProgressIncreasedFromPlanned() {
         Anime anime = new Anime(1L, "Test Anime", 12, Set.of(), new Season("Winter 2022"));
-        Listentry listentry = new Listentry(null, anime, Status.PLANNED, 0, null, null, null);
+        Listentry listentry = new ListentryBuilder()
+            .withAnime(anime)
+            .withStatus(Status.PLANNED)
+            .withProgress(0)
+            .build();
 
         listentry.incrementProgress();
 
@@ -37,7 +45,11 @@ class ListentryTest {
     @Test
     void shouldThrowIfProgressExceedsMax() {
         Anime anime = new Anime(1L, "Test Anime", 12, Set.of(), new Season("Fall 2021"));
-        Listentry listentry = new Listentry(null, anime, Status.COMPLETED, 12, null, null, null);
+        Listentry listentry = new ListentryBuilder()
+            .withAnime(anime)
+            .withStatus(Status.COMPLETED)
+            .withProgress(12)
+            .build();
 
         assertThrows(IllegalArgumentException.class, () -> listentry.incrementProgress());
     }
@@ -46,7 +58,11 @@ class ListentryTest {
     @Test
     void shouldThrowIfStatusIsCompletedButProgressIsNotMax() {
         Anime anime = new Anime(1L, "Test Anime", 12, Set.of(), new Season("Spring 2020"));
-        Listentry listentry = new Listentry(null, anime, Status.WATCHING, 10, null, null, null);
+        Listentry listentry = new ListentryBuilder()
+            .withAnime(anime)
+            .withStatus(Status.WATCHING)
+            .withProgress(10)
+            .build();
 
         assertThrows(IllegalArgumentException.class, () -> listentry.updateStatus(Status.COMPLETED));
     }
@@ -55,7 +71,11 @@ class ListentryTest {
     @Test
     void shouldThrowWhenSettingNegativeProgress() {
         Anime anime = new Anime(1L, "Negative Test", 10, Set.of(), new Season("Fall 2022"));
-        Listentry listentry = new Listentry(null, anime, Status.PLANNED, 0, null, null, null);
+        Listentry listentry = new ListentryBuilder()
+            .withAnime(anime)
+            .withStatus(Status.PLANNED)
+            .withProgress(0)
+            .build();
 
         assertThrows(IllegalArgumentException.class, () -> listentry.updateProgress(-1));
     }
