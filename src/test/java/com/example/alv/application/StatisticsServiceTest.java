@@ -5,6 +5,7 @@ import com.example.alv.domain.listentry.ListentryRepository;
 import com.example.alv.domain.listentry.Status;
 import com.example.alv.domain.statistics.GenreStatisticsService;
 import com.example.alv.domain.statistics.ProgressStatisticsService;
+import com.example.alv.domain.statistics.RatingStatisticsService;
 import com.example.alv.domain.statistics.StatusStatisticsService;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +22,7 @@ class StatisticsServiceTest {
     private GenreStatisticsService genreStatisticsService;
     private StatusStatisticsService statusStatisticsService;
     private ProgressStatisticsService progressStatisticsService;
+    private RatingStatisticsService ratingStatisticsService;
     private StatisticsService statisticsService;
 
     @BeforeEach
@@ -29,12 +31,14 @@ class StatisticsServiceTest {
         genreStatisticsService = mock(GenreStatisticsService.class);
         statusStatisticsService = mock(StatusStatisticsService.class);
         progressStatisticsService = mock(ProgressStatisticsService.class);
-    
+        ratingStatisticsService = mock(RatingStatisticsService.class);
+
         statisticsService = new StatisticsService(
             listentryRepository,
             genreStatisticsService,
             statusStatisticsService,
-            progressStatisticsService
+            progressStatisticsService,
+            ratingStatisticsService
         );
     }
 

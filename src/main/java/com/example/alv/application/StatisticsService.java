@@ -5,6 +5,7 @@ import com.example.alv.domain.listentry.ListentryRepository;
 import com.example.alv.domain.listentry.Status;
 import com.example.alv.domain.statistics.GenreStatisticsService;
 import com.example.alv.domain.statistics.ProgressStatisticsService;
+import com.example.alv.domain.statistics.RatingStatisticsService;
 import com.example.alv.domain.statistics.StatusStatisticsService;
 
 import org.springframework.stereotype.Service;
@@ -18,17 +19,20 @@ public class StatisticsService {
     private final GenreStatisticsService genreStatisticsService;
     private final StatusStatisticsService statusStatisticsService;
     private final ProgressStatisticsService progressStatisticsService;
+    private final RatingStatisticsService ratingStatisticsService;
 
     public StatisticsService(
         ListentryRepository listentryRepository,
         GenreStatisticsService genreStatisticsService,
         StatusStatisticsService statusStatisticsService,
-        ProgressStatisticsService progressStatisticsService
+        ProgressStatisticsService progressStatisticsService,
+        RatingStatisticsService ratingStatisticsService
     ) {
         this.listentryRepository = listentryRepository;
         this.genreStatisticsService = genreStatisticsService;
         this.statusStatisticsService = statusStatisticsService;
         this.progressStatisticsService = progressStatisticsService;
+        this.ratingStatisticsService = ratingStatisticsService;
     }
 
     // Get the Top 10 most watched Genres
@@ -47,5 +51,17 @@ public class StatisticsService {
     public long getTotalWatchedEpisodes() {
         List<Listentry> listentries = listentryRepository.findAll();
         return progressStatisticsService.totalWatchedEpisodes(listentries);
+    }
+
+    // Get the overall average rating of the entire list
+    public double getOverallAverageRating() {
+        List<Listentry> entries = listentryRepository.findAll();
+        return ratingStatisticsService.calculateOverallAverageRating(entries);
+    }
+
+    // Get average rating by Genre
+    public Map<String, Double> getAverageRatingPerGenre() {
+        List<Listentry> entries = listentryRepository.findAll();
+        return ratingStatisticsService.calculateAverageRatingPerGenre(entries);
     }
 }

@@ -36,4 +36,16 @@ public class StatisticsController {
         long total = statisticsService.getTotalWatchedEpisodes();
         return ResponseEntity.ok(total);
     }
+
+    // Get the overall average rating of the entire list
+    @GetMapping("/overall-average-rating")
+    public ResponseEntity<Double> getOverallAverageRating() {
+        return ResponseEntity.ok(statisticsService.getOverallAverageRating());
+    }
+
+    // Get the average rating per Genre
+    @GetMapping("/average-rating-per-genre")
+    public ResponseEntity<Map<String, Double>> getAverageRatingPerGenre() {
+        return ResponseEntity.ok(statisticsService.getAverageRatingPerGenre());
+    }
 }
